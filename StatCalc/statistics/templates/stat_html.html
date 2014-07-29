@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Stats</title>
+<style media="screen" type="text/css">
+.header{
+	font-family:Helvetica;
+    border-style: solid;
+    border-width: black;
+    border-left-width:1px;
+    border-right-width: 1px;
+	border-top-width: 1px;
+	border-bottom-width:1px;
+    border-color: gray;
+}
+.inputtext{
+	font-family:Helvetica;
+	width:160px;
+	height:80px;
+}
+</style>
+</head>
+<body>
+<ul class="header">
+<h1 align="center"> Application </h1>
+<h2 align="center"> A simple django based application for statistical calculations</h2>
+</ul>
+
+</form>
+
+<form>
+<label for="name" font-family="Helvetica">
+<span>Data<i>(Comma separated)</i></span>
+<br><br>
+<input type="text" maxlength="1000"  class="inputtext" name="q" value={{ query|escape }} />
+</label>
+</p>
+<input type="submit" value="Calculate">
+</form>
+
+{% if query %}
+<h2> Results: </h2>
+{% if results.9 == 0 %}
+<h4> Error: Input empty </h4>
+{% elif results.9 == 1 %}
+<h4> Error: Input Invalid </h4>
+{% else %}
+<ul>
+<li>Count: {{ results.0 }}</li>
+<li>Max: {{ results.1 }}</li>
+<li>Min: {{ results.2 }}</li>
+<li>Mean: {{ results.3 }}</li>
+<li>Median: {{ results.4 }}</li>                                    
+<li>Mode: {{ results.5 }}</li>
+<li>Mode Frequency: {{ results.6 }}</li>
+<li>Standard Deviation: {{ results.7 }}</li>
+<li>Variance: {{ results.8 }}</li>
+</ul>
+{% endif %}
+{% endif %}
+</body>
+</html>
