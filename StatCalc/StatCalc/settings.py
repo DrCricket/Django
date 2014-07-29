@@ -1,5 +1,4 @@
 # Django settings for StatCalc project.
-import os
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -155,3 +154,5 @@ LOGGING = {
         },
     }
 }
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
