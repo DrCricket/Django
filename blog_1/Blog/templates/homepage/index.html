@@ -1,0 +1,41 @@
+{% extends 'C:/Users/Utsav/Documents/Workspace/Blog/templates/homepage/base.html' %} <-- this needs to be fixed */ -->
+
+{% block title %}
+My Blog
+{% endblock %}
+
+
+{% block navi %}
+
+<a href="{% url 'homepage_index' %}">Home </a> - <a href="{% url 'homepage_about' %}" >About </a> -
+<a href="{% url 'homepage_archive' %}" >Archive </a> - <a href="{% url 'homepage_contact' %}" >Contact </a>-
+
+
+	{% if user.is_authenticated %}
+		<a href="{% url 'homepage_profile' %}" > Profile </a>-
+		<a href="{% url 'homepage_logout' %}" > Logout </a>
+	{% else %}
+		<a href="{% url 'homepage_login' %}"> Login </a>
+	{% endif %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+	<h2> Entries </h2>
+
+	{% for i in entries %}
+		<div><b> {{ i.title }} </b> <br> <i> {{ i.created }} </br> </i></div>
+			<div> {{ i.text }} </div>
+			<br></br>
+	{% endfor %}
+
+{% endblock %}
+
+
+{% block footer %}
+2014 - Chinka's Blog
+{% endblock %}
+

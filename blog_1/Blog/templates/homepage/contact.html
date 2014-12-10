@@ -1,0 +1,37 @@
+{% extends 'homepage/index.html' %}
+
+{% block title %}
+Contact
+{% endblock %}
+
+
+{% block content %}
+<h2> Contact </h2>
+
+{% if not contact_sent %}
+
+	{% if success %}
+		<h2> You just entered </h2>
+		<p>email: {{ email }}</p>
+		<p>title: {{ title }}</p>
+		<p>text: {{ text }} </p>
+	
+		{% else %}
+	
+		<form action="." method="POST">
+			<p hidden>{{ csrf_token }}</p> <!-- Use hidden when needed --!>
+			{{ contact_form.as_p }}
+			<input type="submit" value="Send">
+			<input type="reset" value="Reset">
+		</form>
+		
+		{% endif %}
+{% else %}
+
+<h2> Sorry, already sent </h2>
+
+{% endif %}
+
+
+{% endblock %}
+
