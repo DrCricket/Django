@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block 'jumbotron' %}
+
+	<div class="jumbotron">
+      <div class="container">
+        <h1 style="text-align:center">Page not Found !</h1>
+        <p style="text-align:center"> {{ help_text }} </p>
+        <p style="text-align:center"><a class="btn btn-primary btn-lg" href='{% url "home" %}' role="button">Go to home</a></p>
+      </div>
+    </div>
+{% endblock %}

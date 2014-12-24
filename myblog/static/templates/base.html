@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Jumbotron Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/jumbotron.css" rel="stylesheet">
+
+    
+    <script src="/static/css/javascript/ie-emulation-modes-warning.js"></script>
+
+    
+  </head>
+
+  <body>
+
+    {% include "navbar.html" %}
+	
+	{% block 'jumbotron' %}
+	{% endblock %}
+	
+	
+	{% block 'threeColumns' %}
+	{% endblock %}
+	
+	
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="static/javascript/jquery.min.js"></script>
+    <script src="static/javascript/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="static/javascript/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

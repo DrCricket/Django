@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block 'jumbotron' %}
+
+	<div class="jumbotron">
+      <div class="container">
+	  {% if entry|length == 0 %}
+	  <h3 style="color: teal"> {{ entry|length }} entries found </h3>
+	  {% endif %}
+	  {% if entry|length == 1 %}
+	  <h3 style="color: teal"> {{ entry|length }} entry found </h3>
+	  {% else %}
+	   <h3 style="color: teal"> {{ entry|length }} entries found </h3>
+	  {% endif %}
+	   
+		{% for i in entry %}
+        <h3> <u> {{ i.title }} </u> </h3>
+		<p style="font-size:14px" ><i> {{ i.created }} </i></p>
+        <p style="font-size:16px" > {{ i.content|truncatechars:50 }} </p>
+		<p><a class="btn btn-default" href="/entry/{{ i.hashval }}/" role="button">Continue reading &raquo;</a></p>
+		{% endfor %}
+      </div>
+    </div>
+	<p style="text-align:center"><a class="btn btn-primary btn-lg" href='{% url "home" %}' role="button">Go to home &raquo;</a></p>
+		
+{% endblock %}

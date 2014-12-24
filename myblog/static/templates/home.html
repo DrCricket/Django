@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block 'jumbotron' %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1 style="text-align:center">Hello, world!</h1>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        <p style="text-align:center"><a class="btn btn-primary btn-lg" href='{% url "archive" %}' role="button">The complete list &raquo;</a></p>
+      </div>
+    </div>
+{% endblock %}
+
+
+
+{% block 'threeColumns' %}
+	
+	{% if entry|length > 0 %}
+		<div class="container">
+		  <div class="row">
+			    {% if entry|length == 1 %}
+					<div class="col-md-4">
+					  <h2>{{ entry.0.title }}</h2>
+					  <p>{{ entry.0.content|truncatechars:20 }}</p>
+					  <p><a class="btn btn-default" href="/entry/{{ entry.0.hashval }}/" role="button">Read more &raquo;</a></p>
+					</div>
+				{% endif %}
+				{% if entry|length == 2 %}
+					<div class="col-md-4">
+					  <h2>{{ entry.0.title }}</h2>
+					  <p>{{ entry.0.content|truncatechars:20 }}</p>
+					  <p><a class="btn btn-default" href="/entry/{{ entry.0.hashval }}/" role="button">Read more &raquo;</a></p>
+					</div>
+					<div class="col-md-4">
+					<h2>{{ entry.1.title }}</h2>
+					  <p>{{ entry.1.content|truncatechars:20 }}</p>
+					  <p><a class="btn btn-default" href="/entry/{{ entry.1.hashval }}/" role="button">Read more &raquo;</a></p>
+				    </div>
+				{% endif %}
+				{% if entry|length == 3 %}
+					<div class="col-md-4">
+					  <h2>{{ entry.0.title }}</h2>
+					  <p>{{ entry.0.content|truncatechars:20 }}</p>
+					  <p><a class="btn btn-default" href="/entry/{{ entry.0.hashval }}/" role="button">Read more &raquo;</a></p>
+					</div>
+					<div class="col-md-4">
+					<h2>{{ entry.1.title }}</h2>
+					  <p>{{ entry.1.content|truncatechars:20 }}</p>
+					  <p><a class="btn btn-default" href="/entry/{{ entry.1.hashval }}/" role="button">Read more &raquo;</a></p>
+				    </div>
+					<div class="col-md-4">
+					<h2>{{ entry.2.title }}</h2>
+					  <p>{{ entry.2.content|truncatechars:20 }}</p>
+					  <p><a class="btn btn-default" href="/entry/{{ entry.2.hashval }}/" role="button">Read more &raquo;</a></p>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	{% else %}
+		<div class="container">
+			<p style="text-align:center"> <b>The blog does not have any entries at the moment !</b> </p>
+		</div>
+	{% endif %}
+	
+	
+{% endblock %}
