@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from .models import Entry
+from models import Entry
 from random import shuffle
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
@@ -63,7 +63,7 @@ def search(request,search_term):
         
         if form.is_valid():
             search_result = Entry.objects.filter(content__icontains=form.cleaned_data['search_term'])
-            help_text = "No entries found for the search term: " + str(form.cleaned_data['search_term'])
+            help_text = "No entries found for the search term: " + "<i><b>"+ str(form.cleaned_data['search_term']) +"</b> </i>"
             form = searchForm()
             context = {'entry':search_result,'form':form,'help_text':help_text}
             
