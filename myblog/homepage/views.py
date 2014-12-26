@@ -7,7 +7,7 @@ from forms import searchForm
 
 def home(request):
     ## Three random articles
-    entry = Entry.objects.all()
+    entry = Entry.objects.filter(published=True)
     entr = []
     if entry.exists():
         t = range(len(entry))
@@ -43,7 +43,7 @@ def blog(request,entrynumber):
     #except:
     #    return render_to_response('404.html')
     
-    entry = Entry.objects.filter(hashval=entrynumber)
+    entry = Entry.objects.filter(hashval=entrynumber,published=True)
     form = searchForm()
     help_text = "Looks like you have come to the wrong place."
     context = {'entry':entry,'form':form,'help_text':help_text}
@@ -62,7 +62,7 @@ def search(request,search_term):
         form = searchForm(request.GET)
         
         if form.is_valid():
-            search_result = Entry.objects.filter(content__icontains=form.cleaned_data['search_term'])
+            search_result = Entry.objects.filter(content__icontains=form.cleaned_data['search_term'],published=True)
             help_text = "No entries found for the search term: " + "<i><b>"+ str(form.cleaned_data['search_term']) +"</b> </i>"
             form = searchForm()
             context = {'entry':search_result,'form':form,'help_text':help_text}
@@ -84,7 +84,7 @@ def about(request):
 
 
 def archive(request):
-    entry = Entry.objects.all()
+    entry = Entry.objects.filter(published=True)
     form = searchForm()
     context = {'entry':entry,'form':form}
     return render_to_response("archive.html",context)

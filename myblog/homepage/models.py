@@ -7,6 +7,7 @@ class Entry(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     hashval = models.BigIntegerField(blank=True)
+    published = models.BooleanField(default=False)
 
     def save(self,*args, **kwargs):
         self.hashval = abs(hash(self.title))
